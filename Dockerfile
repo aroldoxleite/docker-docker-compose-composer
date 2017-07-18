@@ -21,7 +21,7 @@ RUN wget -qO- https://get.docker.com/ | sh \
 RUN cd /opt && \
     wget https://nodejs.org/dist/v4.5.0/node-v4.5.0-linux-x64.tar.xz && \
     tar xf node-v4.5.0-linux-x64.tar.xz && \
-    PATH=$PATH:/opt/node-v4.5.0-linux-x64/bin && \
+    PATH=$PATH:/opt/node-v4.5.0-linux-x64/bin
     
 RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - \
   && apt-get install -y nodejs \
