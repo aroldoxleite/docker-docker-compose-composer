@@ -29,3 +29,5 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - \
   && docker --version \
   && docker-compose --version \
   && composer --version
+  
+RUN composer global require hirak/prestissimo
