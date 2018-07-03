@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update \
   && apt-get install -y git curl wget php-cli php-curl unzip sudo
 
