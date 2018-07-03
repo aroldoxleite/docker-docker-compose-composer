@@ -1,22 +1,34 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 
-RUN apt-get update
-RUN apt-get install curl wget php5-cli -y
+RUN apt-get update \
+  && apt-get install -y curl wget php-cli php-curl unzip sudo
 
 #instalando composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -s https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 
 #instalando docker-compose
-ARG compose_version=1.10.0
-RUN curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)"
+ARG COMPOSE_VERSION=1.11.2
+RUN curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 RUN chmod +x /usr/local/bin/docker-compose
 
 #instalando docker
 RUN wget -qO- https://get.docker.com/ | sh
 RUN usermod -aG docker $(whoami)
 
-RUN docker --version
-RUN docker-compose --version
-RUN composer --version
+# Ferramentas NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
+  && apt-get install -y nodejs
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
+   && sudo apt-get update \
+   && sudo apt-get install -y yarn
+
+RUN composer global require hirak/prestissimo
+
+RUN docker --version \
+  && docker-compose --version \
+  && composer --version \
+  && php --version
