@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-  && apt-get install -y git curl wget php-cli php-curl unzip sudo
+  && apt-get install -y git curl wget php-cli php-curl php-mbstring unzip sudo
 
 #instalando composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
