@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt-get update \
-  && apt-get install -y curl wget php-cli php-curl unzip sudo
+  && apt-get install -y git curl wget php-cli php-curl unzip sudo
 
 #instalando composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
