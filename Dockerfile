@@ -31,5 +31,3 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - \
   && composer --version
   
 RUN composer global require hirak/prestissimo
-
-VOLUME ["/builds"]
