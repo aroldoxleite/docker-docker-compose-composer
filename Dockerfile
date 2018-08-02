@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 RUN apt-get update \
-  && apt-get install -y curl wget php5-cli php5-curl unzip sudo
+  && apt-get install -y curl wget php5-cli php5-curl unzip sudo xz-utils
 
 #instalando composer
 RUN curl -s https://getcomposer.org/installer | php \
