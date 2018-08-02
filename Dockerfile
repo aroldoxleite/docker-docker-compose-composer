@@ -9,8 +9,8 @@ RUN curl -s https://getcomposer.org/installer | php \
   && chmod +x /usr/local/bin/composer
 
 #instalando docker-compose
-ARG compose_version=1.10.0
-RUN curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" \
+ARG compose_version=1.22.0
+RUN curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-$(uname -s)-$(uname -m)" \
   && chmod +x /usr/local/bin/docker-compose
 
 #instalando docker
